@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Демо-страница Gulp-сборки">
+  <!-- preload-fonts -->
+  <!-- critical-css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- og-tags -->
+  <!-- schema -->
+  <title>Gulp Starter — демо</title>
+  @@include('favicon.html')
+</head>
+<body>
+  @@include('parts/header.html')
+
+  <main class="container">
+    <section class="hero">
+      <h1 class="hero__title">Gulp Starter</h1>
+      <p class="hero__text">
+        Готовая сборка с SCSS, esbuild, WebP/AVIF, critical CSS и SEO.
+      </p>
+      <div class="hero__actions">
+        <button type="button" class="btn btn--primary" data-action="greet">Попробовать</button>
+        <a href="#" class="btn btn--ghost">Документация</a>
+      </div>
+      <p class="hero__result" data-result></p>
+    </section>
+
+    <section class="features">
+      <article class="card">
+        <div class="card__icon">{{icon(svg1, "", "mono")}}</div>
+        <h3 class="card__title">Быстрая сборка</h3>
+        <p class="card__text">Dev-режим стартует меньше секунды благодаря MD5-кэшу.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">{{icon(svg2, "icon--accent", "mono")}}</div>
+        <h3 class="card__title">Современные форматы</h3>
+        <p class="card__text">WebP и AVIF с автоматической retina-генерацией.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">{{icon(svg1, "", "mono")}}</div>
+        <h3 class="card__title">Готово к проду</h3>
+        <p class="card__text">Хэши, минификация, critical CSS и sitemap — из коробки.</p>
+      </article>
+    </section>
+
+    <section class="typography">
+      <h2 class="typography__title">Типографика</h2>
+      <p class="typography__lead">Основной текст — Inter Regular, 400.</p>
+      <p class="typography__em">Акцентный курсив — Inter Medium Italic, 500.</p>
+      <p class="typography__strong">Жирный — Inter Bold, 700.</p>
+    </section>
+
+    <section class="showcase">
+      <h2 class="showcase__title">Адаптивные изображения</h2>
+      <p class="showcase__text">Браузер сам выбирает формат и размер под экран.</p>
+      <div class="showcase__image">
+        {{picture(img1, "", "Демонстрация адаптивного изображения")}}
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Gulp Starter · <span data-year></span></p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

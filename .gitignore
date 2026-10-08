@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Builds
+dist/
+build/
+
+# Generated files
+src/favicon.html
+src/scss/_fonts.scss
+**/.cache.json
+rev-manifest.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Misc
+.cache/
+temp/
+tmp/

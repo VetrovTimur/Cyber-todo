@@ -1,0 +1,277 @@
+@use 'fonts';
+
+// === Переменные ===
+$color-dark: #1a2332;
+$color-text: #4a5568;
+$color-muted: #a0aec0;
+$color-primary: #3b82f6;
+$color-primary-dark: #2563eb;
+$color-accent: #ef4444;
+$color-bg: #f7fafc;
+$color-surface: #ffffff;
+$color-border: #e2e8f0;
+
+$radius-sm: 6px;
+$radius: 12px;
+$radius-lg: 20px;
+
+$shadow-sm: 0 1px 3px rgb(0 0 0 / 6%);
+$shadow: 0 4px 16px rgb(0 0 0 / 8%);
+
+/*! CRITICAL:START */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $color-text;
+  background: $color-bg;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+// === Header ===
+.header {
+  background: $color-surface;
+  border-bottom: 1px solid $color-border;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+
+  &__logo {
+    font-weight: 700;
+    font-size: 18px;
+    color: $color-dark;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 28px;
+
+    a {
+      color: $color-text;
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.15s;
+
+      &:hover { color: $color-primary; }
+    }
+  }
+}
+
+// === Hero ===
+.hero {
+  text-align: center;
+  padding: 80px 20px 60px;
+
+  &__title {
+    margin: 0 0 16px;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: $color-dark;
+    line-height: 1.1;
+  }
+
+  &__text {
+    max-width: 560px;
+    margin: 0 auto 32px;
+    font-size: 18px;
+    color: $color-text;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__result {
+    margin-top: 24px;
+    min-height: 24px;
+    font-weight: 500;
+    color: $color-primary;
+  }
+}
+
+// === Кнопки ===
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border-radius: $radius;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+  &--primary {
+    background: $color-primary;
+    color: #fff;
+
+    &:hover { background: $color-primary-dark; }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $color-dark;
+    border-color: $color-border;
+
+    &:hover { border-color: $color-dark; }
+  }
+}
+
+/*! CRITICAL:END */
+
+// === Features ===
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.card {
+  background: $color-surface;
+  padding: 32px 28px;
+  border-radius: $radius;
+  border: 1px solid $color-border;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow;
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 20px;
+    color: $color-primary;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+
+  &__title {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: $color-dark;
+    letter-spacing: -0.01em;
+  }
+
+  &__text {
+    margin: 0;
+    color: $color-text;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+}
+
+// === Типографика ===
+.typography {
+  background: $color-surface;
+  padding: 40px;
+  border-radius: $radius;
+  border: 1px solid $color-border;
+  margin: 40px 0;
+
+  &__title {
+    margin: 0 0 24px;
+    font-size: 24px;
+    font-weight: 600;
+    color: $color-dark;
+  }
+
+  &__lead {
+    font-weight: 400;
+    margin: 0 0 12px;
+  }
+
+  &__em {
+    font-weight: 500;
+    font-style: italic;
+    margin: 0 0 12px;
+  }
+
+  &__strong {
+    font-weight: 700;
+    margin: 0;
+    color: $color-dark;
+  }
+}
+
+// === Showcase ===
+.showcase {
+  margin: 40px 0;
+
+  &__title {
+    margin: 0 0 12px;
+    font-size: 24px;
+    font-weight: 600;
+    color: $color-dark;
+  }
+
+  &__text {
+    margin: 0 0 24px;
+    color: $color-text;
+  }
+
+  &__image {
+    border-radius: $radius-lg;
+    overflow: hidden;
+    box-shadow: $shadow;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+}
+
+// === Footer ===
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: $color-muted;
+  font-size: 14px;
+
+  p { margin: 0; }
+}
+
+// === Модификаторы ===
+.icon--accent {
+  color: $color-accent;
+}
