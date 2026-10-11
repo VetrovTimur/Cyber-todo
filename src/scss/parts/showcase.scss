@@ -1,0 +1,29 @@
+@use '../variables' as *;
+
+.showcase {
+    margin: 40px 0;
+
+    &__title {
+        margin: 0 0 12px;
+        font-size: 24px;
+        font-weight: 600;
+        color: $color-dark;
+    }
+
+    &__text {
+        margin: 0 0 24px;
+        color: $color-text;
+    }
+
+    &__image {
+        border-radius: $radius-lg;
+        overflow: hidden;
+        box-shadow: $shadow;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+}

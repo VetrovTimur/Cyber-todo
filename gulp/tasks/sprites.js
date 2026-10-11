@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const fs = require('fs');
 const svgSprite = require('gulp-svg-sprite');
 const browserSync = require('../browserSync');
-const { BUILD_DIR } = require('../config');
+const { BUILD_DIR, isProd } = require('../config');
 
 function hasSvgs(dir) {
     if (!fs.existsSync(dir)) return false;
@@ -23,7 +23,7 @@ function spriteMono(done) {
                 symbol: {
                     dest: '.',
                     sprite: 'icons-mono.svg',
-                    example: false
+                    example: isProd ? false : { dest: 'icons-mono.html' }
                 }
             },
             shape: {
@@ -57,7 +57,7 @@ function spriteMulti(done) {
                 symbol: {
                     dest: '.',
                     sprite: 'icons-multi.svg',
-                    example: false
+                    example: isProd ? false : { dest: 'icons-multi.html' }
                 }
             },
             shape: {

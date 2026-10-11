@@ -1,0 +1,33 @@
+@use '../variables' as *;
+
+.typography {
+    background: $color-surface;
+    padding: 40px;
+    border-radius: $radius;
+    border: 1px solid $color-border;
+    margin: 40px 0;
+
+    &__title {
+        margin: 0 0 24px;
+        font-size: 24px;
+        font-weight: 600;
+        color: $color-dark;
+    }
+
+    &__lead {
+        font-weight: 400;
+        margin: 0 0 12px;
+    }
+
+    &__em {
+        font-weight: 500;
+        font-style: italic;
+        margin: 0 0 12px;
+    }
+
+    &__strong {
+        font-weight: 700;
+        margin: 0;
+        color: $color-dark;
+    }
+}

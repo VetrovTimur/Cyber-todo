@@ -55,7 +55,9 @@ function scripts() {
 
             const jsDir = path.join(BUILD_DIR, 'js');
             if (fs.existsSync(jsDir)) {
-                const jsFiles = fs.readdirSync(jsDir).filter(f => /^main[.-][a-z0-9]+\.js$/.test(f));
+                const jsBase = path.basename(paths.scripts.src, path.extname(paths.scripts.src));
+                const jsRegex = new RegExp('^' + jsBase + '[.-][a-z0-9]+\\.js$');
+                const jsFiles = fs.readdirSync(jsDir).filter(f => jsRegex.test(f));
                 if (jsFiles.length > 0) {
                     manifest['js/main.js'] = `js/${jsFiles[0]}`;
                 }

@@ -1,0 +1,20 @@
+@use '../variables' as *;
+
+/*! CRITICAL:about:START */
+.about {
+    background: $color-surface;
+    padding: 40px;
+    border-radius: $radius;
+    border: 1px solid $color-border;
+    margin: 40px 0;
+
+    &__text {
+        margin: 0 0 16px;
+        font-size: 17px;
+        line-height: 1.7;
+
+        &:last-child { margin-bottom: 0; }
+    }
+}
+
+/*! CRITICAL:about:END */

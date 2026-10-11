@@ -55,7 +55,9 @@ function styles() {
 
             const cssDir = path.join(BUILD_DIR, 'css');
             if (fs.existsSync(cssDir)) {
-                const cssFiles = fs.readdirSync(cssDir).filter(f => /^style[.-][a-z0-9]+\.css$/.test(f));
+                const cssBase = path.basename(paths.styles.src, path.extname(paths.styles.src));
+                const cssRegex = new RegExp('^' + cssBase + '[.-][a-z0-9]+\\.css$');
+                const cssFiles = fs.readdirSync(cssDir).filter(f => cssRegex.test(f));
                 if (cssFiles.length > 0) {
                     manifest['css/style.css'] = `css/${cssFiles[0]}`;
                 }

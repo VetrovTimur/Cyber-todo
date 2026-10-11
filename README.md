@@ -1,6 +1,6 @@
 # Gulp Starter
 
-Мощная сборка Gulp с SCSS, esbuild, WebP/AVIF, critical CSS и SEO-оптимизациями.
+Мощная Gulp-сборка с SCSS, esbuild, WebP/AVIF, per-page critical CSS и SEO-оптимизациями.
 
 ## Требования
 
@@ -29,22 +29,34 @@ npm install
 
 ```
 src/
-├── js/          JavaScript (esbuild)
-├── scss/        SCSS-стили
-├── img/         Изображения (WebP, AVIF, retina)
-├── fonts/       Шрифты (TTF/OTF → WOFF/WOFF2)
-├── svg/         SVG (спрайты mono/multi, контентные)
-├── static/      Файлы без обработки (OG-картинки, PDF и т.д.)
-├── parts/       HTML-компоненты (header, footer, ...)
-└── index.html   Главная страница
+├── js/                  JavaScript (esbuild)
+├── scss/                SCSS-стили
+│   ├── style.scss       Точка входа
+│   ├── _variables.scss  Общие переменные
+│   ├── _fonts.scss      Генерируется автоматически
+│   ├── critical/        Критичные стили (per-page)
+│   │   ├── common.scss
+│   │   ├── index.scss
+│   │   ├── contacts.scss
+│   │   └── about.scss
+│   ├── parts/           Общие компоненты (не критичны)
+│   └── pages/           Специфика страниц (не критична)
+├── img/                 Изображения (WebP, AVIF, retina)
+├── fonts/               Шрифты (TTF → WOFF/WOFF2)
+├── svg/                 SVG (спрайты mono/multi, контентные)
+├── static/              Файлы без обработки (OG-картинки, PDF и т.д.)
+├── parts/               HTML-компоненты (header, footer, ...)
+├── index.html           Главная
+├── contacts.html        Контакты
+└── about.html           О проекте
 
 gulp/
-├── tasks/       Задачи Gulp
-├── custom/      Самописные плагины
-└── index.js     Точка входа
+├── tasks/               Задачи Gulp
+├── custom/              Самописные плагины
+└── index.js             Точка входа
 
-dist/            Dev-сборка
-build/           Prod-сборка
+dist/                    Dev-сборка
+build/                   Prod-сборка
 ```
 
 ## Разработка
@@ -54,34 +66,103 @@ build/           Prod-сборка
 Перед каждым `git commit` автоматически запускаются линтеры на изменённых файлах (через `husky` + `lint-staged`). Если есть ошибки — коммит не проходит.
 
 Чтобы обойти проверку (не рекомендуется):
+
 ```bash
 git commit --no-verify -m "message"
+```
 
 ## Возможности
 
-- **HTML:** инклюды, минификация, автоматическая генерация `<picture>` и inline SVG
-- **SCSS:** компиляция, автопрефиксы, sourcemaps (dev), минификация (prod)
-- **JS:** esbuild с модулями и минификацией
-- **Изображения:** WebP + AVIF + retina, дедупликация, кэш по MD5
-- **Шрифты:** TTF → WOFF/WOFF2, автогенерация `@font-face`, preload
-- **SVG:** спрайты `mono` и `multi`, оптимизация через SVGO
-- **Favicon:** 33 файла для всех платформ
-- **Critical CSS:** два режима — manual (маркеры) и auto (Puppeteer)
-- **SEO:** OG-теги, Schema.org, sitemap.xml, robots.txt
-- **Линтеры:** ESLint, Stylelint, html-validate
-- **Pre-commit hooks:** автоматическая проверка кода перед коммитом
-- **Prod:** хэширование имён файлов, минификация, без sourcemaps
+### HTML
+- Инклюды (`@@include('parts/header.html')`)
+- Минификация
+- Автогенерация `<picture>` с AVIF/WebP/retina
+- Inline SVG-иконки из спрайтов
+- Preload шрифтов
+- OG-теги для соцсетей
+- Schema.org (JSON-LD)
+- Per-page critical CSS
+
+### SCSS
+- Компиляция, автопрефиксы
+- Sourcemaps (dev)
+- Минификация (prod)
+- Разбивка на `critical/`, `parts/`, `pages/`
+
+### JS
+- esbuild с модулями и bundle
+- Минификация
+- Sourcemaps (dev)
+
+### Изображения
+- WebP + AVIF
+- Retina-генерация (`@2x`)
+- Дедупликация одинаковых размеров
+- Инкрементальный кэш по MD5
+
+### Шрифты
+- TTF → WOFF + WOFF2
+- Автогенерация `@font-face`
+- Preload критичных шрифтов
+- Инкрементальный кэш по MD5
+
+### SVG
+- Спрайты `mono` (перекрашиваются через CSS) и `multi` (цветные)
+- Оптимизация через SVGO
+- Демо-страницы спрайтов в dev-режиме
+
+### Favicon
+- 33 файла для всех платформ (iOS, Android, Windows, Yandex)
+- `favicon.ico` и `browserconfig.xml` в корне
+- Остальное в `/favicon/`
+
+### Critical CSS
+- Два режима: `manual` (маркеры в SCSS) и `auto` (Puppeteer)
+- Per-page: общий блок `common` + блок конкретной страницы
+
+### SEO
+- Open Graph (Facebook, Telegram, VK)
+- Twitter Card
+- Schema.org (Organization + WebSite)
+- sitemap.xml с приоритетами страниц
+- robots.txt
+
+### Линтеры
+- ESLint для JS
+- Stylelint для SCSS
+- html-validate для HTML
+- Pre-commit hooks (husky + lint-staged)
+
+### Prod-сборка
+- Хэширование имён файлов (cache busting)
+- Минификация CSS/JS/HTML
+- Без sourcemaps
+- Валидация HTML
+- Отчёт о размерах (gulp-size)
 
 ## Конфигурация
 
 Все настройки — в `gulp/config.js`:
 
-- `paths` — пути к файлам
-- `imageSizes`, `imageFormats`, `retinaMultiplier` — настройки изображений
-- `preloadFonts` — preload шрифтов
-- `criticalCss` — режим critical CSS (`manual` / `auto`)
-- `site` — SEO-данные (URL, название, OG-картинка, приоритеты страниц)
-- `schema` — Schema.org разметка
+| Параметр | Описание |
+|----------|----------|
+| `paths` | Пути к файлам (src/dest для всех задач) |
+| `imageSizes` | Размеры для генерации картинок |
+| `imageFormats` | Форматы конвертации (webp, avif) |
+| `retinaMultiplier` | Множитель ретины (2 = @2x) |
+| `preloadFonts` | Настройки preload шрифтов |
+| `criticalCss` | Режим critical CSS (`manual` / `auto`) |
+| `site` | SEO-данные: url, name, description, ogImage, priorities |
+| `schema` | Schema.org разметка (Organization, WebSite) |
+| `faviconsConfig` | Настройки favicon (appName, theme_color и т.д.) |
+
+## Как добавить новую страницу
+
+1. Создай `src/<page>.html` с маркерами `<!-- critical-css -->`, `<!-- og-tags -->`, `<!-- schema -->`, `<!-- preload-fonts -->`.
+2. Если нужны критические стили — создай `src/scss/critical/<page>.scss` с маркерами `/*! CRITICAL:<page>:START */`.
+3. Если есть некритичные стили — создай `src/scss/pages/<page>Pages.scss`.
+4. Импортируй оба файла в `src/scss/style.scss`.
+5. Добавь приоритет в `config.js` → `site.priorities` (опционально).
 
 ## Лицензия
 

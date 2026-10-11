@@ -1,0 +1,122 @@
+@use '../variables' as *;
+
+/*! CRITICAL:common:START */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: $color-text;
+    background: $color-bg;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.header {
+    background: $color-surface;
+    border-bottom: 1px solid $color-border;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+    }
+
+    &__logo {
+        font-weight: 700;
+        font-size: 18px;
+        color: $color-dark;
+        text-decoration: none;
+        letter-spacing: -0.02em;
+    }
+
+    &__nav {
+        display: flex;
+        gap: 28px;
+
+        a {
+            color: $color-text;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.15s;
+
+            &:hover { color: $color-primary; }
+        }
+    }
+}
+
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: $color-muted;
+    font-size: 14px;
+
+    p { margin: 0; }
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: $radius;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+    &--primary {
+        background: $color-primary;
+        color: #fff;
+
+        &:hover { background: $color-primary-dark; }
+    }
+
+    &--ghost {
+        background: transparent;
+        color: $color-dark;
+        border-color: $color-border;
+
+        &:hover { border-color: $color-dark; }
+    }
+}
+
+.page-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+
+    &__title {
+        margin: 0 0 12px;
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: $color-dark;
+    }
+
+    &__text {
+        margin: 0;
+        font-size: 18px;
+        color: $color-text;
+    }
+}
+
+/*! CRITICAL:common:END */

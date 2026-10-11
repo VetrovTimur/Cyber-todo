@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { BUILD_DIR } = require('../config');
+const { BUILD_DIR, faviconsConfig } = require('../config');
 const browserSync = require('../browserSync');
 
 async function favicon(done) {
@@ -28,19 +28,19 @@ async function favicon(done) {
         const { default: favicons } = await import('favicons');
 
         const result = await favicons(sourceFile, {
-            appName: 'Мой крутой сайт',
-            appShortName: 'Сайт',
-            appDescription: 'Сборка Gulp',
-            developerName: 'Timur',
-            background: '#ffffff',
-            theme_color: '#3498db',
-            path: '/favicon',
+            appName: faviconsConfig.appName,
+            appShortName: faviconsConfig.appShortName,
+            appDescription: faviconsConfig.appDescription,
+            developerName: faviconsConfig.developerName,
+            background: faviconsConfig.background,
+            theme_color: faviconsConfig.theme_color,
+            path: faviconsConfig.path,
             url: '',
-            display: 'standalone',
-            orientation: 'portrait',
-            scope: '/',
-            start_url: '/',
-            version: 1.0,
+            display: faviconsConfig.display,
+            orientation: faviconsConfig.orientation,
+            scope: faviconsConfig.scope,
+            start_url: faviconsConfig.start_url,
+            version: faviconsConfig.version,
             logging: false,
             icons: {
                 android: true,

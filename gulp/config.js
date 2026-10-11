@@ -69,6 +69,21 @@ const schema = {
     }
 };
 
+const faviconsConfig = {
+    appName: 'Мощная сборка Gulp с SCSS, esbuild, WebP/AVIF, critical CSS и SEO-оптимизациями',
+    appShortName: 'Сайт',
+    appDescription: 'Сборка Gulp',
+    developerName: 'Timur',
+    background: '#ffffff',
+    theme_color: '#3498db',
+    display: 'standalone',
+    orientation: 'portrait',
+    scope: '/',
+    start_url: '/',
+    version: 1.0,
+    path: '/favicon'
+};
+
 module.exports = {
     paths,
     imageSizes,
@@ -79,5 +94,6 @@ module.exports = {
     preloadFonts,
     criticalCss,
     site,
-    schema
+    schema,
+    faviconsConfig
 };

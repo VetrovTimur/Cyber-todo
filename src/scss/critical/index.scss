@@ -1,0 +1,39 @@
+@use '../variables' as *;
+
+/*! CRITICAL:index:START */
+.hero {
+    text-align: center;
+    padding: 80px 20px 60px;
+
+    &__title {
+        margin: 0 0 16px;
+        font-size: clamp(32px, 5vw, 56px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: $color-dark;
+        line-height: 1.1;
+    }
+
+    &__text {
+        max-width: 560px;
+        margin: 0 auto 32px;
+        font-size: 18px;
+        color: $color-text;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    &__result {
+        margin-top: 24px;
+        min-height: 24px;
+        font-weight: 500;
+        color: $color-primary;
+    }
+}
+
+/*! CRITICAL:index:END */

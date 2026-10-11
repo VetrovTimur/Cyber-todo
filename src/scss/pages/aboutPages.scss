@@ -1,0 +1,51 @@
+@use '../variables' as *;
+
+.about-features {
+    margin: 40px 0;
+
+    &__title {
+        margin: 0 0 20px;
+        font-size: 24px;
+        color: $color-dark;
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            padding: 12px 0 12px 32px;
+            border-bottom: 1px solid $color-border;
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 18px;
+                width: 16px;
+                height: 16px;
+                background: $color-primary;
+                border-radius: 50%;
+            }
+
+            &:last-child { border-bottom: none; }
+        }
+    }
+}
+
+.about-cta {
+    text-align: center;
+    padding: 40px;
+    background: $color-surface;
+    border-radius: $radius;
+    border: 1px solid $color-border;
+    margin: 40px 0;
+
+    &__text {
+        margin: 0 0 20px;
+        font-size: 18px;
+        color: $color-dark;
+    }
+}
