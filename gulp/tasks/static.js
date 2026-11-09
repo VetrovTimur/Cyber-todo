@@ -10,7 +10,7 @@ function staticTask(done) {
         return;
     }
 
-    return gulp.src('src/static/**/*')
+    return gulp.src('src/static/**/*', { encoding: false })
         .pipe(gulp.dest(BUILD_DIR))
         .pipe(browserSync.stream());
 }
