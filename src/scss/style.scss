@@ -1,15 +1,17 @@
+// 1. Переменные и миксины
 @use 'variables' as *;
-@use 'fonts';
-@use 'critical/common';
-@use 'critical/index';
-@use 'critical/contacts';
-@use 'critical/about';
-@use 'parts/cards';
-@use 'parts/typography';
-@use 'parts/showcase';
-@use 'pages/contactsPages';
-@use 'pages/aboutPages';
+@use 'mixins' as *;
 
-.icon--accent {
-    color: $color-accent;
-}
+// 2. Автогенерируемые шрифты (создается сборкой)
+@use 'fonts' as *;
+
+// 3. Базовые стили (фундамент)
+@use 'base/reset' as *;
+@use 'base/typography' as *;
+@use 'base/global' as *;
+
+// 4. Компоненты (parts)
+// @use 'parts/header' as *;
+
+// 5. Стили страниц (pages)
+// @use 'pages/index' as *;

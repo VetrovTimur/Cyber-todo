@@ -17,7 +17,7 @@ function watchFiles() {
     gulp.watch('src/js/**/*.js', scripts);
     gulp.watch(paths.images.src, images);
 
-    gulp.watch(paths.fonts.src, gulp.series(fonts, fontFace));
+    gulp.watch(['src/fonts/**/*.{ttf,otf,woff2}'], gulp.series(fonts, fontFace));
 
     gulp.watch('src/svg/icons/mono/**/*.svg', spriteMono);
     gulp.watch('src/svg/icons/multi/**/*.svg', spriteMulti);

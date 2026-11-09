@@ -1,7 +1,7 @@
 {
-  "name": "gulp-starter",
+  "name": "projectName",
   "version": "1.0.0",
-  "description": "Мощная Gulp-сборка: SCSS, JS, WebP/AVIF, critical CSS, SEO",
+  "description": "Project description",
   "scripts": {
     "dev": "gulp",
     "build": "cross-env NODE_ENV=production gulp build",
@@ -26,9 +26,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VetrovTimur/gulp-starter-public.git"
+    "url": "git+linkToProject"
   },
-  "homepage": "https://github.com/VetrovTimur/gulp-starter-public#readme",
+  "homepage": "Link to the home page",
   "lint-staged": {
     "src/js/**/*.js": "eslint --fix",
     "src/scss/**/*.scss": "stylelint --fix"
@@ -63,6 +63,7 @@
     "html-validate": "^11.16.2",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
+    "merge-stream": "^2.0.0",
     "sass": "^1.105.1",
     "stylelint": "^17.16.0",
     "stylelint-config-standard-scss": "^17.0.0",
