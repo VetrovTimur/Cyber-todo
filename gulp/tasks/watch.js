@@ -10,6 +10,7 @@ const fontFace = require('./fontFace');
 const { spriteMono, spriteMulti } = require('./sprites');
 const svgContent = require('./svgContent');
 const favicon = require('./favicon');
+const staticTask = require('./static'); // <-- ВОТ ОН, НАШ СПАСИТЕЛЬ
 
 function watchFiles() {
     gulp.watch('src/**/*.html', html);
@@ -22,7 +23,9 @@ function watchFiles() {
     gulp.watch('src/svg/icons/mono/**/*.svg', spriteMono);
     gulp.watch('src/svg/icons/multi/**/*.svg', spriteMulti);
     gulp.watch('src/svg/content/**/*.svg', svgContent);
-    gulp.watch('src/favicon.{svg,png}', favicon);
+
+    // ВОТ ЭТА СТРОЧКА РЕШАЕТ ПРОБЛЕМУ:
+    gulp.watch('src/static/**/*', staticTask);
 }
 
 module.exports = watchFiles;

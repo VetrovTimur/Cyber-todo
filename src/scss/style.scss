@@ -15,3 +15,6 @@
 
 // 5. Стили страниц (pages)
 // @use 'pages/index' as *;
+
+@use 'parts/auth' as *;
+@use 'pages/index' as *;

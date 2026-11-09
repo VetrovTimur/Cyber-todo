@@ -69,5 +69,8 @@
     "stylelint-config-standard-scss": "^17.0.0",
     "ttf2woff": "^3.0.0",
     "ttf2woff2": "^8.0.1"
+  },
+  "dependencies": {
+    "firebase": "^13.2.0"
   }
 }

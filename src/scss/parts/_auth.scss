@@ -1,0 +1,172 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    &__title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-shadow: 0 0 10px rgb(255 255 255 / 50%);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    &__form {
+        position: relative;
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 400px;
+        border-radius: 12px;
+
+        /* СОВРЕМЕННЫЙ МЕТОД: Фон + Градиентная рамка в одном свойстве */
+        border: 2px solid transparent;
+        background:
+            linear-gradient(#121212, #121212) padding-box,
+            linear-gradient(45deg, #f00, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #f00) border-box;
+        background-size: 100% 100%, 400% 400%;
+        animation: glowing 15s linear infinite;
+
+        /* Свечение (Неон) */
+        &::after {
+            content: '';
+            position: absolute;
+            inset: -4px; /* Выступает за рамки */
+            z-index: -1; /* Прячем ЗА форму */
+            background: linear-gradient(45deg, #f00, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #f00);
+            background-size: 400%;
+            border-radius: 16px; /* Чуть больше радиуса формы */
+            filter: blur(15px); /* Размытие для эффекта неона */
+            opacity: 0.6; /* Чтобы не слепило глаза */
+            animation: glowing 15s linear infinite;
+        }
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: relative;
+        z-index: 1; /* Защита от перекрытия */
+
+        label {
+            font-size: 0.9rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input {
+            background: #0a0a0a; /* Почти черный фон инпута */
+            border: 1px solid #333;
+            padding: 12px 15px;
+            border-radius: 6px;
+            color: #fff;
+            transition: all 0.3s ease;
+
+            &:focus {
+                border-color: #00ffd5;
+                box-shadow: 0 0 10px rgb(0 255 213 / 30%);
+            }
+        }
+    }
+
+        &__remember {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        z-index: 1;
+        margin-top: -5px; // Чуть подтянем к паролю
+
+        input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background: #000;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+
+            &:checked {
+                background: #00ffd5;
+                border-color: #00ffd5;
+                box-shadow: 0 0 10px rgb(0 255 213 / 50%);
+            }
+
+            // Кастомная галочка
+            &:checked::after {
+                content: '✔';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #000;
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+
+        label {
+            font-size: 0.85rem;
+            color: #aaa;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    &__submit {
+        background: #1a1a1a;
+        color: #fff;
+        border: 1px solid #444;
+        padding: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+
+        &:hover {
+            background: #222;
+            box-shadow: 0 0 15px rgb(255 255 255 / 20%);
+            border-color: #fff;
+        }
+    }
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+// Мобильная адаптация для страницы входа
+@media (width <= 576px) {
+    .auth {
+        padding: 0 15px; // Чтобы форма не прилипала к краям экрана
+
+        &__title {
+            font-size: 1.5rem; // Уменьшаем заголовок
+        }
+
+        &__form {
+            padding: 1.5rem; // Уменьшаем внутренние отступы карточки
+            gap: 1rem; // Уменьшаем расстояние между полями
+        }
+    }
+}
