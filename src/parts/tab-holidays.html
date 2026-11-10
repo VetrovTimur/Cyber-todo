@@ -1,0 +1,40 @@
+<div class="holidays-container">
+    <!-- Шапка календаря -->
+    <div class="calendar-header">
+        <button type="button" id="prev-month" class="calendar-header__btn">←</button>
+        <h2 id="current-month" class="calendar-header__title">Месяц</h2>
+        <button type="button" id="next-month" class="calendar-header__btn">→</button>
+    </div>
+
+    <!-- Сетка дней недели -->
+    <div class="calendar-weekdays">
+        <div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div><div>Вс</div>
+    </div>
+
+    <!-- Сама сетка с числами (генерируется через JS) -->
+    <div id="calendar-grid" class="calendar-grid">
+        <!-- Тут будут появляться дни -->
+    </div>
+
+    <!-- Форма добавления события -->
+    <form id="add-holiday-form" class="holiday-form">
+        <input type="text" id="holiday-title" placeholder="Название события" required autocomplete="off">
+        <input type="date" id="holiday-date" required>
+
+        <select id="holiday-type">
+            <option value="holiday">Праздник</option>
+            <option value="birthday">День рождения</option>
+            <option value="death">День памяти</option>
+        </select>
+
+        <button type="submit" class="holiday-form__btn">Добавить</button>
+    </form>
+
+    <!-- Список событий на выбранный день -->
+    <div class="holiday-events">
+        <h3 id="selected-date-title" class="holiday-events__title">Выберите день в календаре</h3>
+        <ul id="holiday-list" class="holiday-list">
+            <!-- События будут появляться здесь -->
+        </ul>
+    </div>
+</div>

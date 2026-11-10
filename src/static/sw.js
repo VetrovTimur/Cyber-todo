@@ -1,13 +1,12 @@
-const CACHE_NAME = 'cyber-todo-v4'; // Версия 4, чтобы сбросить старый мусор
+const CACHE_NAME = 'cyber-todo-v6';
 const ASSETS = [
-    '/',
-    '/index.html',
-    '/login.html',
-    '/css/style.css',
-    '/js/main.js',
-    '/manifest.json',
-    '/icons/icon-192.png', // Добавили сюда
-    '/icons/icon-512.png'  // И сюда
+    './',
+    './index.html',
+    './login.html',
+    './css/style.css',
+    './js/main.js',
+    './manifest.json',
+    './icon.svg'
 ];
 
 self.addEventListener('install', (e) => {
@@ -25,17 +24,27 @@ self.addEventListener('activate', (e) => {
             );
         })
     );
+    self.clients.claim(); // <-- ВОТ ОНА, МАГИЯ МГНОВЕННОГО ОБНОВЛЕНИЯ
 });
 
 self.addEventListener('fetch', (e) => {
-    e.respondWith(
-        caches.match(e.request).then((cachedResponse) => {
-            if (cachedResponse) {
-                return cachedResponse;
-            }
-            return fetch(e.request).catch(() => {
-                return Response.error();
-            });
-        })
-    );
+    if (e.request.mode === 'navigate') {
+        e.respondWith(
+            fetch(e.request)
+                .then((response) => {
+                    const responseClone = response.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(e.request, responseClone);
+                    });
+                    return response;
+                })
+                .catch(() => caches.match(e.request))
+        );
+    } else {
+        e.respondWith(
+            caches.match(e.request).then((cachedResponse) => {
+                return cachedResponse || fetch(e.request);
+            })
+        );
+    }
 });

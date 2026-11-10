@@ -100,7 +100,7 @@ function fontFace(done) {
         );
     });
 
-    const output = blocks.join('\n\n') + '\n';
+    const output = blocks.length > 0 ? blocks.join('\n\n') + '\n' : '// Автогенерируемый файл. Шрифты не найдены.\n';
 
     fs.writeFileSync(outputFile, output, 'utf8');
     console.log(`✅ fontFace: сгенерировано ${blocks.length} @font-face в src/scss/_fonts.scss`);

@@ -1,0 +1,57 @@
+.task-filters {
+    display: flex;
+    flex-direction: column; // Ставим группы друг под другом
+    gap: 15px; // Расстояние между рядами
+    margin-bottom: 2rem;
+
+    // Группа кнопок (один ряд)
+    &__group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+
+        // Небольшой разделитель между группами на мобилках
+        @media (max-width: 576px) {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #222;
+
+            &:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .task-filters__btn {
+                padding: 4px 10px;
+                font-size: 0.75rem;
+            }
+        }
+    }
+
+    &__btn {
+        background: transparent;
+        color: #888;
+        border: 2px solid #333;
+        padding: 6px 14px; // Чуть уменьшили паддинг, чтобы кнопок было больше влезть
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.85rem; // Чуть уменьшили шрифт
+        transition: all 0.3s ease;
+
+        &:hover {
+            border-color: #555;
+            color: #fff;
+        }
+
+        &.active {
+            color: #fff;
+            border: 2px solid transparent;
+            background:
+                linear-gradient(#121212, #121212) padding-box,
+                linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+            background-size: 100% 100%, 400% 400%;
+            animation: glowing 20s linear infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+    }
+}

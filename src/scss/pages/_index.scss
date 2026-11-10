@@ -4,50 +4,6 @@
     min-height: 100vh;
 }
 
-// Шапка сайта
-.tasker-header {
-    border-bottom: 1px solid #333;
-    background-color: rgb(10 10 10 / 80%);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-
-    &__inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5rem 15px;
-    }
-
-    &__logo {
-        font-size: 1.5rem;
-        font-weight: 900;
-        letter-spacing: 3px;
-        color: #fff;
-        text-shadow: 0 0 10px rgb(0 255 213 / 50%), 0 0 20px rgb(0 255 213 / 30%);
-    }
-
-    &__logout {
-        background: transparent;
-        color: #aaa;
-        border: 1px solid #555;
-        padding: 8px 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-
-        &:hover {
-            color: #ff4d4d;
-            border-color: #ff4d4d;
-            box-shadow: 0 0 10px rgb(255 77 77 / 30%);
-        }
-    }
-}
-
-// Основной контент
 .tasker {
     flex: 1;
     padding-top: 2rem;
@@ -57,56 +13,15 @@
     gap: 2rem;
     max-width: 800px;
     margin: 0 auto;
-}
 
-// Форма добавления
-.task-form {
-    display: flex;
-    gap: 10px;
-    background: #121212;
-    padding: 10px;
-    border-radius: 12px;
-    border: 1px solid #333;
-    transition: border-color 0.3s ease;
-
-    &:focus-within {
-        border-color: #00ffd5;
-        box-shadow: 0 0 15px rgb(0 255 213 / 20%);
-    }
-
-    input {
-        flex: 1;
-        background: transparent;
-        border: none;
-        padding: 12px;
-        color: #fff;
-        font-size: 1rem;
-
-        &::placeholder {
-            color: #555;
-        }
-    }
-
-    &__btn {
-        background: #1a1a1a;
-        color: #00ffd5;
-        border: 1px solid #00ffd5;
-        padding: 0 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-
-        &:hover {
-            background: #00ffd5;
-            color: #000;
-            box-shadow: 0 0 15px rgb(0 255 213 / 50%);
-        }
+    @media (max-width: 576px) {
+        padding-top: 1rem;
+        padding-left: 15px;  /* Добавили отступ слева */
+        padding-right: 15px; /* Добавили отступ справа */
+        gap: 1rem;
     }
 }
 
-// Список задач
 .task-list {
     list-style: none;
     display: flex;
@@ -121,129 +36,61 @@
     }
 }
 
-// Карточка задачи
-.task-item {
+.hidden {
+    display: none !important;
+}
+
+.task-loader {
+    text-align: center;
+    color: #00ffd5;
+    font-size: 1.2rem;
+    padding: 2rem;
+    font-style: italic;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+// Заглушки для пустых вкладок
+.tab-placeholder {
+    text-align: center;
+    padding: 80px 20px;
+    color: #555;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
-    background: #121212;
-    padding: 15px 20px;
-    border-radius: 8px;
-    border: 1px solid #333;
-    transition: all 0.3s ease;
+    justify-content: center;
+    gap: 20px;
 
-    &:hover {
-        border-color: #555;
+    &__icon {
+        font-size: 4rem;
+        animation: float 3s ease-in-out infinite;
     }
 
-    // Кастомный чекбокс
-    &__checkbox {
-        appearance: none;
-        width: 20px;
-        height: 20px;
-        border: 2px solid #555;
-        border-radius: 4px;
-        cursor: pointer;
-        position: relative;
-        transition: all 0.3s ease;
-
-        &:checked {
-            background: #00ffd5;
-            border-color: #00ffd5;
-            box-shadow: 0 0 10px rgb(0 255 213 / 50%);
-
-            &::after {
-                content: '✔';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                color: #000;
-                font-size: 12px;
-                font-weight: bold;
-            }
-        }
-    }
-
-    // Текст задачи
-    &__text {
-        flex: 1;
+    &__title {
         color: #fff;
-        font-size: 1rem;
-        transition: color 0.3s ease;
+        font-size: 2rem;
+        text-shadow: 0 0 10px rgba(0, 255, 213, 0.5);
     }
 
-    // Кнопка удаления
-    &__delete {
-        background: transparent;
-        color: #555;
-        border: none;
-        cursor: pointer;
-        font-size: 1.2rem;
-        transition: all 0.3s ease;
-
-        &:hover {
-            color: #ff4d4d;
-            text-shadow: 0 0 10px rgb(255 77 77 / 50%);
-        }
-    }
-
-    // Модификатор для выполненной задачи
-    &--completed {
-        opacity: 0.6;
-
-        .task-item__text {
-            text-decoration: line-through;
-            color: #888;
-        }
+    &__text {
+        font-size: 1.1rem;
+        max-width: 400px;
+        line-height: 1.5;
     }
 }
 
-
-// Мобильная адаптация для таскера
-@media (width <= 576px) {
-    .tasker-header {
-        &__inner {
-            padding: 1rem 15px;
-        }
-
-        &__logo {
-            font-size: 1.2rem; // Уменьшаем лого
-        }
-
-        &__logout {
-            padding: 6px 12px;
-            font-size: 0.8rem;
-        }
-    }
-
-    .tasker {
-        padding-top: 1rem;
-        gap: 1rem;
-    }
-
-    // Форму добавления делаем вертикальной на телефонах
-    .task-form {
-        flex-direction: column;
-        padding: 15px;
-
-        input {
-            padding: 10px;
-            text-align: center; // Текст по центру
-        }
-
-        &__btn {
-            padding: 12px;
-        }
-    }
-
-    // Карточку задачи делаем чуть компактнее
-    .task-item {
-        padding: 12px 15px;
-        gap: 10px;
-
-        &__text {
-            font-size: 0.95rem;
-        }
-    }
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
 }

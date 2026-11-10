@@ -11,10 +11,17 @@
 @use 'base/global' as *;
 
 // 4. Компоненты (parts)
-// @use 'parts/header' as *;
+@use 'parts/auth' as *;
+@use 'parts/header' as *;
+@use 'parts/form' as *;
+@use 'parts/filters' as *;
+@use 'parts/task-item' as *;
+@use 'parts/nav' as *;
+
 
 // 5. Стили страниц (pages)
-// @use 'pages/index' as *;
-
-@use 'parts/auth' as *;
+@use 'pages/shopping' as *;
 @use 'pages/index' as *;
+@use 'pages/shopping' as *;
+@use 'pages/holidays' as *;
+

@@ -1,22 +1,47 @@
 import { initAuth, checkAuthState } from './modules/auth.js';
 import { initTasks } from './modules/tasks.js';
+import { initShopping } from './modules/shopping.js';
+import { initFilters } from './modules/filters.js';
+import { initNavigation } from './modules/navigation.js';
+import { initCalendar } from './modules/calendar.js';
+import { initHolidays } from './modules/holidays.js';
+import { initCustomSelect } from './modules/custom-select.js';
 
-// Запускаем логику входа/выхода
+initNavigation();
 initAuth();
 
-// Проверяем, если мы на главной странице (есть список задач)
 if (document.getElementById('task-list')) {
-    // Ждем подтверждения авторизации и запускаем таскер
+    initCustomSelect();
+    initFilters();
+
     checkAuthState((user) => {
+        const initialDate = initCalendar();
         initTasks(user);
+        initShopping(user);
+        initHolidays(user);
+
+        if (initialDate) {
+            document.dispatchEvent(new window.CustomEvent('dateSelected', {
+                detail: { date: initialDate }
+            }));
+        }
     });
 }
 
-// Регистрация Service Worker для PWA
+// === УМНАЯ РЕГИСТРАЦИЯ SERVICE WORKER ===
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('Service Worker зарегистрирован!'))
-            .catch(err => console.error('Ошибка Service Worker:', err));
-    });
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                registration.unregister();
+                console.log('Service Worker отключен для локальной разработки');
+            }
+        });
+    } else {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log('Service Worker зарегистрирован!'))
+                .catch(err => console.error('Ошибка Service Worker:', err));
+        });
+    }
 }

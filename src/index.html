@@ -4,32 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Todo</title>
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#00ffd5">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="tasker-body">
-    <header class="tasker-header">
-        <div class="tasker-header__inner container">
-            <h1 class="tasker-header__logo">CYBER TODO</h1>
-            <button id="logout-btn" class="tasker-header__logout">Выйти</button>
-        </div>
-    </header>
 
-    <main class="tasker container">
-        <section class="tasker__add-section">
-            <form id="add-task-form" class="task-form">
-                <input type="text" id="task-input" placeholder="Что нужно сделать?" required autocomplete="off">
-                <button type="submit" class="task-form__btn">Добавить</button>
-            </form>
+    @@include('parts/header.html')
+    @@include('parts/nav.html')
+
+    <main class="container">
+
+        <!-- Вкладка: Задачи -->
+        <section id="tab-tasks" class="tab-content active">
+            @@include('parts/tab-tasks.html')
         </section>
 
-        <section class="tasker__list-section">
-            <ul id="task-list" class="task-list">
-                <!-- Задачи будут появляться здесь -->
-                <li class="task-list__empty" id="empty-message">У тебя пока нет задач. Самое время добавить!</li>
-            </ul>
+        <!-- Вкладка: Покупки -->
+        <section id="tab-shopping" class="tab-content">
+            @@include('parts/tab-shopping.html')
         </section>
+
+        <!-- Вкладка: Праздники -->
+        <section id="tab-holidays" class="tab-content">
+            @@include('parts/tab-holidays.html')
+        </section>
+
+        <!-- Вкладка: Проекты -->
+        <section id="tab-projects" class="tab-content">
+            @@include('parts/tab-projects.html')
+        </section>
+
     </main>
 
     <script src="js/main.js"></script>

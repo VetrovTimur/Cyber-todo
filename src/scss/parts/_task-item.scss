@@ -1,0 +1,207 @@
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #121212;
+    padding: 15px 20px;
+    border-radius: 0; /* Убрали скругление */
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+
+    &:hover {
+        border-color: #555;
+    }
+
+    // Чекбокс
+    &__checkbox {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #555;
+        border-radius: 4px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+        background: transparent;
+
+        &:checked {
+            border: 2px solid transparent;
+            background:
+                linear-gradient(#121212, #121212) padding-box,
+                linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+            background-size: 100% 100%, 400% 400%;
+            animation: glowing 20s linear infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+
+            &::after {
+                content: '✔';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #fff;
+                font-size: 12px;
+                font-weight: bold;
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            }
+        }
+    }
+
+    // Бейджи категорий
+    &__badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-right: 12px;
+        letter-spacing: 0.5px;
+        border: 1px solid;
+
+        &--work {
+            background: rgba(0, 123, 255, 0.15);
+            color: #007bff;
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+        &--home {
+            background: rgba(40, 167, 69, 0.15);
+            color: #28a745;
+            border-color: #28a745;
+            box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
+        }
+        &--personal {
+            background: rgba(122, 0, 255, 0.15);
+            color: #c88bff;
+            border-color: #7a00ff;
+            box-shadow: 0 0 8px rgba(122, 0, 255, 0.2);
+        }
+    }
+
+    &__text {
+        flex: 1;
+        color: #fff;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+    }
+
+    // Бейдж дедлайна
+    &__deadline {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 4px;
+        background: #222;
+        color: #aaa;
+        border: 1px solid #444;
+        margin-right: 10px;
+        white-space: nowrap;
+
+        &--overdue {
+            color: #ff4d4d;
+            border-color: #ff4d4d;
+            background: rgba(255, 77, 77, 0.1);
+            box-shadow: 0 0 8px rgba(255, 77, 77, 0.3);
+            animation: pulse-red 2s infinite;
+        }
+
+        &--today {
+            color: #ffb300;
+            border-color: #ffb300;
+            background: rgba(255, 179, 0, 0.1);
+            box-shadow: 0 0 8px rgba(255, 179, 0, 0.3);
+        }
+    }
+
+    // Поле редактирования
+    &__edit-input {
+        flex: 1;
+        border: 2px solid transparent;
+        background:
+            linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+            linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+        background-size: 100% 100%, 400% 400%;
+        animation: glowing 20s linear infinite;
+        color: #fff;
+        font-size: 1rem;
+        padding: 8px 12px;
+        border-radius: 4px;
+        outline: none;
+        font-family: inherit;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+
+        &:focus {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    // Кнопка удаления
+    &__delete {
+        background: transparent;
+        color: #555;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: #ff4d4d;
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+        }
+    }
+
+    &__delete--confirm {
+        color: #ff4d4d !important;
+        font-size: 0.8rem !important;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+    }
+
+    // Выполненная задача
+    &--completed {
+        opacity: 0.6;
+
+        .task-item__text {
+            text-decoration: line-through;
+            color: #888;
+        }
+    }
+
+    // Адаптив для мобильных устройств
+    @media (max-width: 576px) {
+        padding: 12px 15px;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        &__text {
+            font-size: 0.95rem;
+            width: calc(100% - 60px);
+        }
+
+        &__badge {
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            margin-right: 5px;
+        }
+
+        &__deadline {
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            order: 3;
+            width: fit-content; /* Исправлено: теперь не растягивается */
+            margin-left: 35px;
+            margin-top: 5px;
+        }
+    }
+}
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 5px rgba(255, 77, 77, 0.2); }
+    50% { box-shadow: 0 0 15px rgba(255, 77, 77, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(255, 77, 77, 0.2); }
+}

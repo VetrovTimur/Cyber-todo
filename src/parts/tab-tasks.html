@@ -1,0 +1,47 @@
+<div class="tasker">
+    <section class="tasker__add-section">
+        <form id="add-task-form" class="task-form">
+            <textarea id="task-input" placeholder="Что нужно сделать?" required autocomplete="off" rows="1"></textarea>
+
+            <!-- НОВОЕ ПОЛЕ: Дедлайн -->
+            <input type="date" id="task-deadline" class="task-form__date" title="Выберите дату (необязательно)">
+
+            <div class="custom-select" id="task-category-wrapper">
+                <input type="hidden" id="task-category" value="personal">
+                <div class="custom-select__trigger">
+                    <span class="custom-select__value">Личное</span>
+                    <span class="custom-select__arrow">▼</span>
+                </div>
+                <ul class="custom-select__options">
+                    <li class="custom-select__option active" data-value="personal">Личное</li>
+                    <li class="custom-select__option" data-value="work">Работа</li>
+                    <li class="custom-select__option" data-value="home">Дом</li>
+                </ul>
+            </div>
+
+            <button type="submit" class="task-form__btn">Добавить</button>
+        </form>
+    </section>
+
+    <section class="tasker__list-section">
+        <div class="task-filters">
+            <div class="task-filters__group">
+                <button class="task-filters__btn active" data-filter-status="all">Все</button>
+                <button class="task-filters__btn" data-filter-status="active">Активные</button>
+                <button class="task-filters__btn" data-filter-status="completed">Выполненные</button>
+            </div>
+            <div class="task-filters__group">
+                <button class="task-filters__btn active" data-filter-category="all">Все категории</button>
+                <button class="task-filters__btn" data-filter-category="work">Работа</button>
+                <button class="task-filters__btn" data-filter-category="home">Дом</button>
+                <button class="task-filters__btn" data-filter-category="personal">Личное</button>
+            </div>
+        </div>
+
+        <div id="task-loader" class="task-loader">Загрузка задач...</div>
+
+        <ul id="task-list" class="task-list">
+            <li class="task-list__empty hidden" id="empty-message">Нет задач по выбранным фильтрам.</li>
+        </ul>
+    </section>
+</div>

@@ -1,0 +1,197 @@
+.task-form {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    position: relative;
+
+    border: 2px solid transparent;
+    background:
+        linear-gradient(#121212, #121212) padding-box,
+        linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+    background-size: 100% 100%, 400% 400%;
+    animation: glowing 20s linear infinite;
+
+    // Стили для текстового поля (textarea)
+    textarea#task-input {
+        flex: 1;
+        background: transparent; // Убрали градиент
+        color: #fff; // Белый текст для читаемости
+        border: none;
+        padding: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        caret-color: #00ffd5; // Бирюзовый курсор
+        font-family: inherit;
+        resize: none;
+        min-height: 44px;
+        line-height: 1.5; // Жестко задаем высоту строки
+        overflow-y: hidden;
+        width: 100%;
+        box-sizing: border-box;
+
+        &::placeholder {
+            color: #555;
+            font-weight: normal;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+
+    // Стили для поля с датой
+    &__date {
+        background: #0a0a0a;
+        border: 1px solid #444;
+        color: #fff;
+        padding: 0 10px;
+        border-radius: 6px;
+        outline: none;
+        font-family: inherit;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+        color-scheme: dark; // Делает иконку календаря белой
+
+        &:focus, &:hover {
+            border-color: #00ffd5;
+        }
+    }
+
+    // Кастомный выпадающий список
+    .custom-select {
+        position: relative;
+        width: 130px;
+        user-select: none;
+        z-index: 10;
+
+        &__trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0a0a0a;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 0 15px;
+            height: 100%;
+            min-height: 44px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+
+            &:hover {
+                border-color: #00ffd5;
+            }
+        }
+
+        &__arrow {
+            font-size: 0.7rem;
+            color: #00ffd5;
+            transition: transform 0.3s ease;
+        }
+
+        &.open {
+            .custom-select__arrow {
+                transform: rotate(180deg);
+            }
+            .custom-select__options {
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        &__options {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 105%;
+            left: 0;
+            right: 0;
+            background: #121212;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 5px 0;
+            margin: 0;
+            list-style: none;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            z-index: 20;
+        }
+
+        &__option {
+            padding: 10px 15px;
+            cursor: pointer;
+            color: #aaa;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: rgba(0, 255, 213, 0.1);
+                color: #00ffd5;
+            }
+
+            &.active {
+                color: #fff;
+                font-weight: bold;
+                background: #222;
+            }
+        }
+    }
+
+    // Кнопка "Добавить"
+    &__btn {
+        background:
+            linear-gradient(#0a0a0a, #0a0a0a) padding-box,
+            linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+        background-size: 100% 100%, 400% 400%;
+        color: #fff;
+        border: 2px solid transparent;
+        padding: 0 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: glowing 20s linear infinite;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 213, 0.3);
+            color: #00ffd5;
+        }
+    }
+
+    // Мобильная адаптация формы
+    @media (max-width: 576px) {
+        flex-direction: column;
+        padding: 15px;
+
+        textarea#task-input, &__date {
+            padding: 12px;
+            width: 100%;
+        }
+
+        textarea#task-input {
+            text-align: left; // Текст слева, чтобы читалось нормально
+        }
+
+        &__date {
+            text-align: center; // Дату по центру
+        }
+
+        .custom-select {
+            width: 100%;
+            &__trigger {
+                justify-content: center;
+                gap: 10px;
+            }
+        }
+
+        &__btn {
+            padding: 12px;
+            width: 100%;
+        }
+    }
+}
