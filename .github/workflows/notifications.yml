@@ -2,8 +2,8 @@ name: Cyber Todo Notifications
 
 on:
   schedule:
-    # Запуск каждый день в 06:00 UTC (это 09:00 по Москве)
-    - cron: '0 6 * * *'
+    # Запуск ровно в 6:00, 9:00, 15:00 и 23:00 по Москве (в UTC это 3, 6, 12, 20)
+    - cron: '0 3,6,12,20 * * *'
   workflow_dispatch: # Позволяет запускать скрипт вручную кнопкой на GitHub
 
 jobs:
@@ -26,7 +26,6 @@ jobs:
 
       - name: Запускаем скрипт уведомлений
         env:
-          # Сюда мы передаем ключ из секретов GitHub
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
           cd backend
