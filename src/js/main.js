@@ -32,7 +32,7 @@ if (document.getElementById('task-list')) {
 if ('serviceWorker' in navigator) {
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         navigator.serviceWorker.getRegistrations().then(function(registrations) {
-            for(let registration of registrations) {
+            for(const registration of registrations) {
                 registration.unregister();
                 console.log('Service Worker отключен для локальной разработки');
             }

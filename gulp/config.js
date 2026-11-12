@@ -43,9 +43,9 @@ const criticalCss = {
 };
 
 const site = {
-    url: 'https://your-site.com',
-    name: 'Your Project Name',
-    description: 'Your project description for SEO',
+    url: 'https://vetrovtimur.github.io/Cyber-todo',
+    name: 'Cyber Todo',
+    description: 'Личный неоновый таскер для управления задачами, покупками и событиями.',
     ogImage: 'og-image.jpg',
     priorities: {
         'index.html': 1.0,
@@ -56,35 +56,35 @@ const site = {
 const schema = {
     enabled: true,
     organization: {
-        name: 'Your Company',
-        url: 'https://your-site.com',
-        logo: 'https://your-site.com/og-image.jpg',
-        description: 'Your company description',
+        name: 'Cyber Todo',
+        url: 'https://vetrovtimur.github.io/Cyber-todo',
+        logo: 'https://vetrovtimur.github.io/Cyber-todo/icon.svg',
+        description: 'Личный неоновый таскер',
         sameAs: [
             // 'https://t.me/yourchannel',
             // 'https://vk.com/yourpage',
         ]
     },
     website: {
-        name: 'Your Project Name',
-        url: 'https://your-site.com',
-        searchUrl: 'https://your-site.com/search?q={search_term_string}'
+        name: 'Cyber Todo',
+        url: 'https://vetrovtimur.github.io/Cyber-todo',
+        searchUrl: 'https://vetrovtimur.github.io/Cyber-todo/search?q={search_term_string}'
     }
 };
 
 const faviconsConfig = {
-    appName: 'Your Project Name',
-    appShortName: 'Project',
-    appDescription: 'Your project description',
-    developerName: 'Your Name',
-    background: '#ffffff',
-    theme_color: '#ffffff',
+    appName: 'Cyber Todo',
+    appShortName: 'Todo',
+    appDescription: 'Личный таскер в RGB стиле',
+    developerName: 'Timur',
+    background: '#0a0a0a', // Черный фон
+    theme_color: '#00ffd5', // Неоновый бирюзовый
     display: 'standalone',
     orientation: 'portrait',
-    scope: '/',
-    start_url: '/',
+    scope: '/Cyber-todo/',
+    start_url: '/Cyber-todo/',
     version: 1.0,
-    path: '/favicon'
+    path: '/Cyber-todo/favicon'
 };
 
 module.exports = {

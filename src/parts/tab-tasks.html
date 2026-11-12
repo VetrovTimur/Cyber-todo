@@ -3,7 +3,6 @@
         <form id="add-task-form" class="task-form">
             <textarea id="task-input" placeholder="Что нужно сделать?" required autocomplete="off" rows="1"></textarea>
 
-            <!-- НОВОЕ ПОЛЕ: Дедлайн -->
             <input type="date" id="task-deadline" class="task-form__date" title="Выберите дату (необязательно)">
 
             <div class="custom-select" id="task-category-wrapper">
@@ -26,15 +25,15 @@
     <section class="tasker__list-section">
         <div class="task-filters">
             <div class="task-filters__group">
-                <button class="task-filters__btn active" data-filter-status="all">Все</button>
-                <button class="task-filters__btn" data-filter-status="active">Активные</button>
-                <button class="task-filters__btn" data-filter-status="completed">Выполненные</button>
+                <button class="task-filters__btn active" data-filter-status="all" type="button">Все</button>
+                <button class="task-filters__btn" data-filter-status="active" type="button">Активные</button>
+                <button class="task-filters__btn" data-filter-status="completed" type="button">Выполненные</button>
             </div>
             <div class="task-filters__group">
-                <button class="task-filters__btn active" data-filter-category="all">Все категории</button>
-                <button class="task-filters__btn" data-filter-category="work">Работа</button>
-                <button class="task-filters__btn" data-filter-category="home">Дом</button>
-                <button class="task-filters__btn" data-filter-category="personal">Личное</button>
+                <button class="task-filters__btn active" data-filter-category="all" type="button">Все категории</button>
+                <button class="task-filters__btn" data-filter-category="work" type="button">Работа</button>
+                <button class="task-filters__btn" data-filter-category="home" type="button">Дом</button>
+                <button class="task-filters__btn" data-filter-category="personal" type="button">Личное</button>
             </div>
         </div>
 

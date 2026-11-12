@@ -4,11 +4,10 @@
     padding: 10px;
     border-radius: 12px;
     position: relative;
-
     border: 2px solid transparent;
     background:
         linear-gradient(#121212, #121212) padding-box,
-        linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+        linear-gradient(45deg, #f00, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #f00) border-box;
     background-size: 100% 100%, 400% 400%;
     animation: glowing 20s linear infinite;
 
@@ -34,6 +33,7 @@
             color: #555;
             font-weight: normal;
         }
+
         &:focus {
             outline: none;
         }
@@ -95,6 +95,7 @@
             .custom-select__arrow {
                 transform: rotate(180deg);
             }
+
             .custom-select__options {
                 visibility: visible;
                 opacity: 1;
@@ -117,7 +118,7 @@
             list-style: none;
             transform: translateY(-10px);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 20px rgb(0 0 0 / 50%);
             z-index: 20;
         }
 
@@ -128,7 +129,7 @@
             transition: all 0.3s ease;
 
             &:hover {
-                background: rgba(0, 255, 213, 0.1);
+                background: rgb(0 255 213 / 10%);
                 color: #00ffd5;
             }
 
@@ -144,7 +145,7 @@
     &__btn {
         background:
             linear-gradient(#0a0a0a, #0a0a0a) padding-box,
-            linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+            linear-gradient(45deg, #f00, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #f00) border-box;
         background-size: 100% 100%, 400% 400%;
         color: #fff;
         border: 2px solid transparent;
@@ -158,13 +159,13 @@
 
         &:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(0, 255, 213, 0.3);
+            box-shadow: 0 0 15px rgb(0 255 213 / 30%);
             color: #00ffd5;
         }
     }
 
     // Мобильная адаптация формы
-    @media (max-width: 576px) {
+    @media (width <= 576px) {
         flex-direction: column;
         padding: 15px;
 
@@ -183,6 +184,7 @@
 
         .custom-select {
             width: 100%;
+
             &__trigger {
                 justify-content: center;
                 gap: 10px;

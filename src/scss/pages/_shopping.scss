@@ -8,7 +8,7 @@
     gap: 2rem;
 
     // Добавили отступы для мобилок
-    @media (max-width: 576px) {
+    @media (width <= 576px) {
         padding-top: 1rem;
         padding-left: 15px;
         padding-right: 15px;
@@ -23,11 +23,10 @@
     padding: 10px;
     border-radius: 0; // Убрали скругление формы (было 12px)
     position: relative;
-
     border: 2px solid transparent;
     background:
         linear-gradient(#121212, #121212) padding-box,
-        linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+        linear-gradient(45deg, #f00, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #f00) border-box;
     background-size: 100% 100%, 400% 400%;
     animation: glowing 20s linear infinite;
 
@@ -55,7 +54,7 @@
 
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
-            -webkit-appearance: none;
+            appearance: none;
             margin: 0;
         }
     }
@@ -63,7 +62,7 @@
     &__btn {
         background:
             linear-gradient(#0a0a0a, #0a0a0a) padding-box,
-            linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+            linear-gradient(45deg, #f00, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #f00) border-box;
         background-size: 100% 100%, 400% 400%;
         color: #fff;
         border: 2px solid transparent;
@@ -77,12 +76,12 @@
 
         &:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgb(255 255 255 / 20%);
         }
     }
 
     // Форма на мобилках
-    @media (max-width: 576px) {
+    @media (width <= 576px) {
         flex-direction: column;
         padding: 15px;
 
@@ -175,7 +174,7 @@
         &:hover {
             color: #00ffd5;
             border-color: #00ffd5;
-            box-shadow: 0 0 10px rgba(0, 255, 213, 0.3);
+            box-shadow: 0 0 10px rgb(0 255 213 / 30%);
         }
     }
 
@@ -189,7 +188,7 @@
 
         &:hover {
             color: #ff4d4d;
-            text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+            text-shadow: 0 0 10px rgb(255 77 77 / 50%);
         }
     }
 
@@ -207,7 +206,7 @@
         }
     }
 
-    @media (max-width: 576px) {
+    @media (width <= 576px) {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;

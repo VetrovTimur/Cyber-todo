@@ -125,7 +125,7 @@ export function initHolidays(user) {
 
             const text = document.createElement('span');
             text.className = 'holiday-item__text';
-            let icon = event.type === 'birthday' ? '🎂' : event.type === 'death' ? '🕯️' : '🎉';
+            const icon = event.type === 'birthday' ? '🎂' : event.type === 'death' ? '🕯️' : '🎉';
             text.textContent = `${icon} ${event.title}`;
             text.title = 'Двойной клик для редактирования';
 

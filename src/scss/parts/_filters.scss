@@ -12,7 +12,7 @@
         align-items: center;
 
         // Небольшой разделитель между группами на мобилках
-        @media (max-width: 576px) {
+        @media (width <= 576px) {
             padding-bottom: 10px;
             border-bottom: 1px solid #222;
 
@@ -48,10 +48,10 @@
             border: 2px solid transparent;
             background:
                 linear-gradient(#121212, #121212) padding-box,
-                linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+                linear-gradient(45deg, #f00, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #f00) border-box;
             background-size: 100% 100%, 400% 400%;
             animation: glowing 20s linear infinite;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgb(255 255 255 / 10%);
         }
     }
 }

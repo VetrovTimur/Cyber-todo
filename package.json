@@ -1,7 +1,7 @@
 {
-  "name": "projectName",
+  "name": "cyber-todo",
   "version": "1.0.0",
-  "description": "Project description",
+  "description": "Личный таскер для управления задачами, покупками и событиями в RGB стиле",
   "scripts": {
     "dev": "gulp",
     "build": "cross-env NODE_ENV=production gulp build",
@@ -27,9 +27,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+linkToProject"
+    "url": "git+https://github.com/VetrovTimur/Cyber-todo.git"
   },
-  "homepage": "Link to the home page",
+  "homepage": "https://vetrovtimur.github.io/Cyber-todo/",
   "lint-staged": {
     "src/js/**/*.js": "eslint --fix",
     "src/scss/**/*.scss": "stylelint --fix"

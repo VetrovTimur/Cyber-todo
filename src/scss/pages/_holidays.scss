@@ -26,12 +26,11 @@
     }
 
     &__btn {
-        background: transparent;
         color: #fff;
         border: 2px solid transparent;
         background:
             linear-gradient(#121212, #121212) padding-box,
-            linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+            linear-gradient(45deg, #f00, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #f00) border-box;
         background-size: 100% 100%, 400% 400%;
         animation: glowing 20s linear infinite;
         width: 40px;
@@ -45,7 +44,7 @@
         justify-content: center;
 
         &:hover {
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgb(255 255 255 / 30%);
         }
     }
 }
@@ -103,8 +102,8 @@
             border-radius: 8px;
             padding: 2px;
             background: var(--event-bg);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: xor;
             mask-composite: exclude;
             pointer-events: none;
             z-index: 0;
@@ -133,14 +132,14 @@
     &.today {
         border-color: #fff;
         color: #fff;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgb(255 255 255 / 20%);
     }
 
     &.active {
         border: 2px solid transparent;
         background:
             linear-gradient(#121212, #121212) padding-box,
-            linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+            linear-gradient(45deg, #f00, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #f00) border-box;
         background-size: 100% 100%, 400% 400%;
         animation: glowing 20s linear infinite;
         color: #fff;
@@ -165,10 +164,12 @@
             background: #ff00c8;
             box-shadow: 0 0 5px #ff00c8;
         }
+
         &--death {
             background: #ff4d4d;
             box-shadow: 0 0 5px #ff4d4d;
         }
+
         &--holiday {
             background: #00ffd5;
             box-shadow: 0 0 5px #00ffd5;
@@ -229,7 +230,7 @@
         &:hover {
             background: #00ffd5;
             color: #000;
-            box-shadow: 0 0 15px rgba(0, 255, 213, 0.4);
+            box-shadow: 0 0 15px rgb(0 255 213 / 40%);
         }
     }
 }
@@ -274,9 +275,11 @@
     &.type-birthday {
         border-left-color: #ff00c8;
     }
+
     &.type-death {
         border-left-color: #ff4d4d;
     }
+
     &.type-holiday {
         border-left-color: #00ffd5;
     }
@@ -310,7 +313,7 @@
     }
 }
 
-@media (max-width: 576px) {
+@media (width <= 576px) {
     .calendar-grid {
         gap: 4px;
     }
@@ -328,6 +331,7 @@
             gap: 2px;
             height: 4px;
         }
+
         &__dot {
             width: 4px;
             height: 4px;

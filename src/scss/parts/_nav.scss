@@ -27,11 +27,11 @@
             border: 2px solid transparent;
             background:
                 linear-gradient(#121212, #121212) padding-box,
-                linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) border-box;
+                linear-gradient(45deg, #f00, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #f00) border-box;
             background-size: 100% 100%, 400% 400%;
             animation: glowing 20s linear infinite;
             color: #fff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgb(255 255 255 / 10%);
         }
     }
 }
@@ -45,7 +45,7 @@
     }
 }
 
-@media (max-width: 576px) {
+@media (width <= 576px) {
     .main-nav {
         gap: 10px;
         padding: 15px;

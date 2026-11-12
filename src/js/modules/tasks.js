@@ -14,7 +14,7 @@ export function initTasks(user) {
 
     if (!taskForm) return;
 
-if (taskInput) {
+    if (taskInput) {
         taskInput.addEventListener('input', function() {
             this.style.height = 'auto'; // Сбрасываем высоту
             this.style.height = (this.scrollHeight + 2) + 'px'; // +2px спасают от обрезки на мобилках
@@ -23,7 +23,7 @@ if (taskInput) {
 
     const q = query(collection(db, 'tasks'), where('uid', '==', user.uid));
 
-        function renderTasks() {
+    function renderTasks() {
         taskList.innerHTML = '';
         if (emptyMessage) emptyMessage.classList.add('hidden');
 

@@ -14,7 +14,7 @@
     max-width: 800px;
     margin: 0 auto;
 
-    @media (max-width: 576px) {
+    @media (width <= 576px) {
         padding-top: 1rem;
         padding-left: 15px;  /* Добавили отступ слева */
         padding-right: 15px; /* Добавили отступ справа */
@@ -79,7 +79,7 @@
     &__title {
         color: #fff;
         font-size: 2rem;
-        text-shadow: 0 0 10px rgba(0, 255, 213, 0.5);
+        text-shadow: 0 0 10px rgb(0 255 213 / 50%);
     }
 
     &__text {
@@ -90,7 +90,7 @@
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
+    0% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+    100% { transform: translateY(0); }
 }
