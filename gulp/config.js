@@ -38,7 +38,7 @@ const preloadFonts = {
 }
 
 const criticalCss = {
-    enabled: true,
+    enabled: false,
     mode: 'manual'
 };
 

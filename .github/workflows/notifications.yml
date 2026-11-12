@@ -1,0 +1,33 @@
+name: Cyber Todo Notifications
+
+on:
+  schedule:
+    # Запуск каждый день в 06:00 UTC (это 09:00 по Москве)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Позволяет запускать скрипт вручную кнопкой на GitHub
+
+jobs:
+  send-digest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Скачиваем код
+        uses: actions/checkout@v4
+
+      - name: Устанавливаем Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Устанавливаем зависимости бэкенда
+        run: |
+          cd backend
+          npm install
+
+      - name: Запускаем скрипт уведомлений
+        env:
+          # Сюда мы передаем ключ из секретов GitHub
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          cd backend
+          node index.js

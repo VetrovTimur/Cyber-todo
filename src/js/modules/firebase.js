@@ -17,3 +17,4 @@ const app = initializeApp(firebaseConfig);
 // Экспортируем сервисы, чтобы использовать их в других файлах (например, в main.js)
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const VAPID_KEY = 'BDez1dLgi5vTXZ6PV9jqb09-k4asTpOlVVt8CDIlQk56qxcV0ixq8z6HJSniWMDshM5AcOMjrVsNa71n9Vu58TY';
